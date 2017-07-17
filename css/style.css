@@ -1,0 +1,458 @@
+@charset "utf-8";
+
+/* General */
+h1 h2 h3 h4 h5{
+	font-family: "News Cycle", "Sans serif";
+}
+body{
+	font-family: "News Cycle", "Sans serif";
+	overflow-x:hidden;
+}
+input::-webkit-input-placeholder { font-size: 12pt; }
+input::-moz-placeholder { font-size: 12pt;  }
+input:-ms-input-placeholder { font-size: 12pt; }
+input:-moz-placeholder { font-size: 12pt; }
+
+:focus {
+outline: 0;
+}
+
+.btn:focus {
+outline: 0;
+}
+
+.largetext{
+	font-size:16px;
+}
+.image-responsive{
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Nav */
+.navbar{
+	border-radius:0px;
+	background-color:#FFFFFF;
+	border: 0px;
+	margin-bottom:0px;
+	min-height:120px;
+	-webkit-backface-visibility: hidden;
+}
+.ad1 {
+    background-color: #FFFFFF;
+}
+.container-fluid{
+	max-height: 2000px;
+	padding-left:320px;
+	padding-right:300px;
+}
+.navbar-header{
+	padding-bottom:5px;
+}
+.navbar-toggle{
+    position: relative;
+    float: right;
+    padding: 10px;
+    margin: 20px;
+    background-color: #363636;
+    border: 0px solid #363636;
+}
+.navbar-nav-team li a {
+	color:#FFFFFF !important;
+}
+.navbar-nav li a {
+	color:#6a9b44 !important;
+	margin-left:1px;
+	font-size:15px;
+}
+.navbar-nav li a :hover{
+	color:#517a2d!important;
+	margin-left:1px;
+	font-size:16px;
+}
+
+/* Cover */
+
+.fade-carousel {
+    position: relative;
+    height: 500px;
+}
+.fade-carousel .carousel-inner .item {
+    height: 500px;
+}
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: #f39c12;
+    border-color: #f39c12;
+    opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+/*          Hero Headers        */
+hgroup{
+	z-index: 1;
+}
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;    
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 5s all ease-in-out .1s;
+       -moz-transition: 5s all ease-in-out .1s; 
+        -ms-transition: 5s all ease-in-out .1s; 
+         -o-transition: 5s all ease-in-out .1s; 
+            transition: 5s all ease-in-out .1s; 
+}
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 5s all ease-in-out .1s;
+       -moz-transition: 5s all ease-in-out .1s; 
+        -ms-transition: 5s all ease-in-out .1s; 
+         -o-transition: 5s all ease-in-out .1s; 
+            transition: 5s all ease-in-out .1s;    
+}
+
+/*            Overlay           */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .5;
+}
+
+/*          Custom Buttons      */
+.btn.btn-lg {padding: 10px 40px;}
+.btn.btn-hero,
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+    color: #FFFFFF;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    outline: none;
+    margin: 20px auto;
+}
+
+/*       Slides backgrounds     */
+.fade-carousel .slides .slide-1, 
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3,
+.fade-carousel .slides .slide-5, 
+.fade-carousel .slides .slide-4 {
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.fade-carousel .slides .slide-1 {
+  background: url(../images/ecoembes_carrousel1.png) center; 
+}
+.fade-carousel .slides .slide-2 {
+  background: url(../images/ecoembes_carrousel2.png) center;
+}
+.fade-carousel .slides .slide-3 {
+  background: url(../images/ecoembes_carrousel3.png) center;
+}
+.fade-carousel .slides .slide-5 {
+  background: url(../images/ecoembes_carrousel5.png) center;
+}
+.fade-carousel .slides .slide-4 {
+  background: url(../images/ecoembes_carrousel4.png) center;
+}
+
+
+/*          Media Queries       */
+@media screen and (min-width: 980px;){
+    .hero { width: 980px;}    
+}
+@media screen and (max-width: 500px){
+    .hero h1 { font-size: 4em;} 
+}
+/*Fin del cover*/
+
+/*Noticias Ecoembes*/
+.section-columns-cover-1{
+	color: #363636;
+	font-size:22px !important;
+	padding-bottom: 0px;
+}
+.section-columns-cover-2{
+	color: #707070;
+	font-size:19px !important;
+	padding-bottom: 0px;
+}
+.section-columns-cover-3{
+	color: gray;
+	font-size:15px !important;
+	padding-bottom: 0px;
+}
+
+.active{
+	color: black;
+	font-size:15.5px !important;
+	font-weight: 600;
+	padding-bottom: 0px;
+}
+
+.section-columns-cover-3 .tablinks:hover{
+	color: black;
+	font-size:15.5px !important;
+	font-weight: 600;
+	padding-bottom: 0px;
+}
+
+.btn-masinfo{
+	background-color: #6a9b44;
+	border-color: #6a9b44;
+	margin-top: 20px;
+	color: #FFFFFF;
+}
+
+.btn-masinfo:hover{
+	background-color: #EF569F;
+	border-color: #EF569F;
+	margin-top: 20px;
+	color: #FFFFFF;
+}
+
+.btn-masinfo:focus{
+	background-color: #EF569F;
+	border-color: #EF569F;
+	margin-top: 20px;
+	color: #FFFFFF;
+}
+
+/*TABS*/
+/* Style the tab */
+div.tab {
+    float: left;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    display: block;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    float: left;
+}
+
+.btn-sector3{
+	border: 0px;
+	background-color: #FFFFFF;
+}
+
+/*Sections de home carrousel 2*/
+.collapse-box{
+	-webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+}
+#myCarousel .nav a small {
+    display:block;
+}
+#myCarousel .nav {
+	background:#eee;
+}
+#myCarousel .nav a {
+    border-radius:0px;
+}
+
+.modal-dialog {
+    width: 800px;
+    margin: 160px auto;
+}
+.txt-big{
+	font-size: 30px;
+	text-align: center;
+	color: #527A38;
+	font-weight: 600;
+}
+.txt-little{
+	font-size: 25px;
+	text-align: left;
+	color: #527A38;
+	font-weight: 600;
+	padding-bottom: 10px;
+}
+.img-hov:hover{
+	width: 200px;
+	height: 200px;
+}
+.btn-hov:hover{
+	width: 45px;
+	height: 45px;
+}
+
+.link-blog{
+	text-decoration: none;
+}
+.link-blog:hover{
+
+	color: #527A38;
+}
+.link-blog:focus{
+	color: #527A38;
+}
+
+/*Footer*/
+.fa{ 
+	font-size: 30px; color: #969696; padding-right: 10px;
+}
+.fa:hover{ 
+	color: #FFFFFF; padding-right: 10px;
+}
+
+
+/*FORM*/
+/*Form*/
+textarea {
+	resize: none;
+}
+.form-label {
+	font-size: 15px;
+	color: #527A38;
+	margin: 0;
+	display: block;
+	opacity: 1;
+	-webkit-transition: .333s ease top, .333s ease opacity;
+	transition: .333s ease top, .333s ease opacity;
+}
+.form-control {
+	border-radius: 0;
+	border-color: #ccc;
+   	border-width: 0 0 2px 0;
+   	border-style: none none solid none;
+   	box-shadow: none;
+}
+.form-control:focus {
+	box-shadow: none;
+	border-color: #0dc6b0;
+}
+.js-hide-label {
+	opacity: 0; 	
+}
+.js-unhighlight-label {
+	color: #999 
+}
+.btn-start-order {
+	background: 0 0 #ffffff;
+    border: 2px solid #527A38;
+    border-radius: 3px;
+    color: #527A38;
+    font-size: 18px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 80px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+    font-weight: 600;
+}
+.btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+	border-color: #527A38;
+	background-color: #527A38;
+	color: #FFFFFF;
+}
+
+
+/*Extras*/
+.name-title{
+	color: #363636;
+	line-height:25px;
+}
+.title-1{
+	border-radius: 3px;
+	background: white;
+	margin-bottom: 0px;
+	padding-left: 50px;
+}
+.modal-title-2{
+  	height: 22%;
+}
+.title-3{
+	color: #707070;
+	font-size: 18px;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-bottom: 20px;
+	line-height:25px;
+	text-align:justify;
+}
+.title-cursos{
+	color: #707070;
+	font-size: 18px;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-bottom: 0px;
+	line-height:25px;
+	text-align:justify;
+}
+.modal-footer{
+	border:0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

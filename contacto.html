@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ecoembes</title>
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Google Font -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=News+Cycle"/>
+    <!-- Ico -->
+    <link rel="icon" type="image/ico" href="images/ecoembes_icono.ico"/>
+    <!-- jQuery Version 1.11.0 -->
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Collapse -->
+    <script type="text/javascript" src="bower_components/bootstrap/js/collapse.js"></script>
+    <!-- Adicional -->
+    <script type="text/javascript" src="js/source_effects.js"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Font Icons -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default ad1 mainNav">
+        <div class="container-fluid">
+
+            <div class="navbar-header " style="margin-top:40px;">
+                <a class="navbar-brand" href="index.html"><img src="images/Logo_ldv.png" alt="Blazing Logo"/></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right largetext" style="margin-top:16px;">
+                    <li>
+                        <a href="index.html">
+                            <center><img src="images/icon_home.png"/></center>
+                            <p style="padding-top:6px">HOME</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ciudadanos.html">
+                            <center><img src="images/icon_ciudadano.png"/></center>
+                            <p style="padding-top:6px">CIUDADANOS</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="empresas.html">
+                            <center><img src="images/icon_empresa.png"/></center>
+                            <p style="padding-top:6px">EMPRESAS</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">
+                            <center><img src="images/icon_form.png"/></center>
+                            <p style="padding-top:6px">CONTACTO</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+        <section style="background-color: #ffffff">
+            <div class="container"  style="padding-bottom:60px; padding-top:20px;">
+                <div class="row">
+                    <div class="col-lg-6" style="background-color: #FFFFFF; padding-left: 0px; padding-right: 0px; padding-right: 30px">
+                        <div class="text-left">
+                        <h2 style="font-weight:700; padding-left: 0px; padding-bottom: 40px"><img src="images/punto.png" class="image-responsive"/> Contacto</h2>
+                        </div>
+                        <form id="pilot-form2" class="form"  method="post" name="pilotForm" style="padding-left: 10px">
+                              <div class="form-group col-xs-12 col-lg-12" style="padding-bottom: 10px">
+                                  <label class="form-label" for="nameInput">Nombres</label>
+                                  <input style="padding-top: 1px; padding-bottom: 3px; padding-left: 0px" type="text" class="form-control" name="nameInput" placeholder="Escribe aquí" tabindex="1" required>
+                              </div>
+                              <div class="form-group col-xs-12 col-lg-12" style="padding-bottom: 10px">
+                                  <label class="form-label" for="nameInput">Apellidos</label>
+                                  <input style="padding-top: 1px; padding-bottom: 3px; padding-left: 0px" type="text" class="form-control" name="nameInput" placeholder="Escribe aquí" tabindex="2" required>
+                              </div>
+                              <div class="form-group col-xs-12 col-lg-12" style="padding-bottom: 10px">
+                                  <label class="form-label" for="emailInput">Email</label>
+                                  <input style="padding-top: 1px; padding-bottom: 3px; padding-left: 0px" type="email" class="form-control" name="emailInput" placeholder="Escribe aquí" tabindex="3" required>
+                              </div>
+                              <div class="form-group col-xs-12 col-lg-12" style="padding-bottom: 10px">
+                                  <label class="form-label" for="numberInput">Teléfono</label>
+                                  <input style="padding-top: 1px; padding-bottom: 3px; padding-left: 0px" type="phone" class="form-control" name="numberInput" placeholder="Escribe aquí" tabindex="4" >
+                              </div>
+                              <div class="form-group col-xs-12 col-lg-12" style="padding-bottom: 10px">
+                                  <label class="form-label" for="roleInput">Sexo</label>
+                                  <select class="form-control" id="role" name="roleInput" placeholder="Your Role" tabindex="5" >
+                                            <option value="0"></option>
+                                            <option value="1">Femenino</option>
+                                            <option value="2">Masculino</option>
+                                    </select>
+                                </div>
+                              <div class="form-group col-xs-12 col-lg-12">
+                                  <label class="form-label" for="msgInput">Mensaje (Opcional)</label>
+                                  <textarea rows="5" cols="50" name="msgInput" class="form-control" placeholder="Escribe aquí" tabindex="6" style="padding-left: 0px"></textarea>
+                              </div>
+                              <div class="text-center">
+                                  <button type="submit" class="btn btn-start-order g-recaptcha" data-sitekey="6LeJoh0UAAAAAPDqA9E6_eW2Gh_AvTzVDqGJxf-l" data-callback="onSubmit2">Submit</button>
+                              </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-6" style="background-color: #FFFFFF; padding-left: 0px; padding-right: 0px; padding-left: 30px">
+                        <div class="text-left">
+                            <h2 style="font-weight:700; padding-left: 0px; padding-bottom: 40px"><img src="images/punto.png" class="image-responsive"/> ¿Dónde estamos?</h2>
+                            <p class="text-left" style="color: #969696; font-size:22px; font-weight: 400; padding-bottom: 0px; margin-bottom: 10px; padding-left: 25px">Carretera a Cieneguilla km 12.5. Calle 62<br>Distrito de Cieneguilla, Lima</p>
+                            <p class="text-left" style="color: #969696; font-size:20px; font-weight: 400; padding-bottom: 0px; margin-bottom: 0px; padding-left: 25px"><i class="reds fa fa-phone" aria-hidden="true"></i>956-731-017</p>
+                            <p class="text-left" style="; padding-left: 25px"><i class="reds fa fa-envelope" aria-hidden="true"></i><a href="mailto:i201623102@cibertec.edu.pe" style="color: #969696; font-size:20px; font-weight: 400; padding-bottom: 0px; text-decoration: none">info@ecoembes.com.pe</a></p> 
+                        </div>
+                        <div style="padding-bottom:50px; padding-top: 20px; height:550px; padding-left: 25px">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.602706073428!2d-76.760895784607!3d-12.070833491451257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105eba042a61823%3A0x9f77c1b0128d48e4!2sAv+A+12%2C+Cieneguilla!5e0!3m2!1ses-419!2spe!4v1500113133389" width="600" height="450" frameborder="0" style="border:0; position: relative; padding-top="30px" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+
+    <footer style="background-color: #363636;">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="col-lg-4" style="padding: 45px 40px 25px 30px">
+                    <p class="text-left" style="color: #FFF; font-size:16.5px; font-weight: 600; padding-bottom: 0px">Ubícanos en:</p>
+                    <p class="text-left" style="color: #969696; font-size:15px; font-weight: 400; padding-bottom: 0px; margin-bottom: 0px">Carretera a Cieneguilla km 12.5. Calle 62<br>Distrito de Cieneguilla, Lima</p>
+                    <p class="text-left" style="color: #969696; font-size:15px; font-weight: 400; padding-bottom: 0px; margin-bottom: 0px"><i class="reds fa fa-phone" aria-hidden="true"></i>956-731-017</p>
+                    <p class="text-left"><i class="reds fa fa-envelope" aria-hidden="true"></i><a href="mailto:i201623102@cibertec.edu.pe" style="color: #969696; font-size:15px; font-weight: 400; padding-bottom: 0px; text-decoration: none">info@ecoembes.com.pe</a></p>        
+                </div>
+                <div class="col-lg-4" style="padding: 35px 40px 40px 40px">
+                    <a href="http://www.amarilloverdeyazul.com/2010/06/llega-tu-guia-de-reciclaje-para-movil/" target="_blank">
+                        <center><img src="images/GUIA0.png" onmouseover="this.src='images/GUIA.png';" onmouseout="this.src='images/GUIA0.png'" class="image-responsive"/></center>
+                    </a>
+                </div>
+                <div class="col-lg-4" style="padding: 60px 0px 25px 120px">
+                    <p class="text-left" style="color: #FFF; font-size:16.5px; font-weight: 600; padding-bottom: 0px">Síguenos en:</p>
+
+                    <a href="https://www.facebook.com/ecoembes/" target="_blank" style="font-size: 30px; color: #969696; padding-right: 2px;"><i class="reds fa fa-facebook-official" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/ecoembes" target="_blank" style="font-size: 30px; color: #969696; padding-right: 2px;"><i class="reds fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://www.youtube.com/user/ecoembesweb" target="_blank" style="font-size: 30px; color: #969696; padding-right: 2px;"><i class="reds fa fa-youtube" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/company-beta/142636/" target="_blank" style="font-size: 30px; color: #969696; padding-right: 2px;"><i class="reds fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://www.flickr.com/photos/ecoembes" target="_blank" style="font-size: 30px; color: #969696; padding-right: 2px;"><i class="reds fa fa-flickr" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/ecoembes/" target="_blank" style="font-size: 30px; color: #969696; padding-right: 0px;"><i class="reds fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr style="    margin-top: 0px; margin-bottom: 0px; border: 0; border-top: 1px solid #707070;">
+        <div class="text-center" style="color: gray; font-size:16.5px; font-weight: 400; padding: 15px 5px">
+            ©2017 Ecoembes. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+/* ===========================
+   CSS DE DAVID
+   =========================== */
+
+/* Main/section styles */
+.citizen section:nth-child(odd) {
+	background-color: #fff;
+}
+.citizen section:nth-child(even) {
+	background-color: #f6f6f7;
+}
+
+
+/* Video styles */
+.video-container {
+	position: relative;
+	height: 0;
+	padding-bottom: 56.25%; /* 16:9 */
+}
+.video-container video,
+.video-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Common section */
+.section > .container {
+	padding: 75px 0;
+}
+.section-headline {
+	margin: 0 0 35px;
+	color: #469730;
+}
+.section-subtitle {
+	margin: 0 0 25px;
+}
+.p-fill {
+	padding: 30px 0;
+}
+.module.parallax {
+  /*padding: 240px 0;*/
+  height: 300px;
+  background-image: url('../images/ciudadanos/bg-algomas.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+
+/* Carousel Fade Effects */
+.carousel-fade .carousel-inner .item {
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+.carousel-fade .carousel-inner .item,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  opacity: 0;
+}
+.carousel-fade .carousel-inner .active,
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+.carousel-fade .carousel-inner .next,
+.carousel-fade .carousel-inner .prev,
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+
+/* Accordion collapse */
+.panel {
+	box-shadow: none;
+	border-bottom: 2px dotted #ccc;
+	margin-top: 0 !important;
+	background-color: #f6f6f7;
+}
+.panel-group {
+	background-color: #f6f6f7;
+}
+.panel .panel-heading {
+	padding: 0;
+}
+.panel .panel-heading > a {
+	font-size: 18px;
+	font-weight: bold;
+	padding: 10px 15px 10px 32px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	display: block;
+	transition: all 250ms ease;
+	color: #939393;
+}
+.panel .panel-heading [href="#c1"] {
+	background-image: url('../images/ciudadanos/c1-off.png');
+}
+.panel .panel-heading [href="#c1"][aria-expanded="true"] {
+	color: #5c8f49;
+	background-image: url('../images/ciudadanos/c1-on.png');
+}
+.panel .panel-heading [href="#c2"] {
+	background-image: url('../images/ciudadanos/c2-off.png');
+}
+.panel .panel-heading [href="#c2"][aria-expanded="true"] {
+	color: #5c8f49;
+	background-image: url('../images/ciudadanos/c2-on.png');
+}
+.panel .panel-heading [href="#c3"] {
+	background-image: url('../images/ciudadanos/c3-off.png');
+}
+.panel .panel-heading [href="#c3"][aria-expanded="true"] {
+	color: #5c8f49;
+	background-image: url('../images/ciudadanos/c3-on.png');
+}
+.panel .panel-heading [href="#c4"] {
+	background-image: url('../images/ciudadanos/c4-off.png');
+}
+.panel .panel-heading [href="#c4"][aria-expanded="true"] {
+	color: #5c8f49;
+	background-image: url('../images/ciudadanos/c4-on.png');
+}
+.panel .panel-heading [href="#c5"] {
+	background-image: url('../images/ciudadanos/c5-off.png');
+}
+.panel .panel-heading [href="#c5"][aria-expanded="true"] {
+	color: #5c8f49;
+	background-image: url('../images/ciudadanos/c5-on.png');
+}
+.panel .panel-heading [href="#c6"] {
+	background-image: url('../images/ciudadanos/c6-off.png');
+}
+.panel .panel-heading [href="#c6"][aria-expanded="true"] {
+	color: #5c8f49;
+	background-image: url('../images/ciudadanos/c6-on.png');
+}
+.panel .panel-heading [href="#c7"] {
+	background-image: url('../images/ciudadanos/c7-off.png');
+}
+.panel .panel-heading [href="#c7"][aria-expanded="true"] {
+	color: #5c8f49;
+	background-image: url('../images/ciudadanos/c7-on.png');
+}
+.panel .panel-heading > a:hover,
+.panel .panel-heading > a:focus {
+	text-decoration: none;
+}
+.panel-group .panel-heading + .panel-collapse > .panel-body {
+	border-top: 0;
+}
+.panel .panel-body {
+	font-size: 15px;
+	padding: 5px 15px 15px
+}
+
+
+/* Education */
+.education > .container > .row {
+	background-image: url('../images/ciudadanos/sheet-top.png'), url('../images/ciudadanos/sheet-bottom.png');
+	background-repeat: no-repeat;
+	background-position: right top 10px, left bottom;
+}
+.education-item {
+	padding: 0 45px;
+}
+.education-item-content {
+	padding: 20px;
+	border: 3px solid transparent;
+	border-radius: 6px;
+	transition: all 300ms ease;
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+	outline: 0;
+	box-shadow: none;
+}
+.education-item-content:hover,
+.education-item-content:focus {
+	text-decoration: none;
+	box-shadow: none;
+	outline: 0;
+}
+.education-item-content h3,
+.education-item-content p {
+	text-decoration: none;
+	color: initial;
+}
+.education-item-content:hover {
+	border-color: #5c8f49;
+}
+.education-item-content:hover .fa {
+	color: #5c8f49;
+	transform: scale(1.2);
+}
+.education-icon {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 3px solid #ccc;
+	margin-left: auto;
+	margin-right: auto;
+	/*background-color: #e5ebdb;*/
+	text-align: center;
+}
+.education-icon .fa {
+	font-size: 60px;
+	padding-right: 0;
+	line-height: 150px;
+	color: #ccc;
+	transform: scale(1);
+	transition: all 300ms ease;
+}

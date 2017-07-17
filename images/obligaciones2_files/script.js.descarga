@@ -1,0 +1,827 @@
+// Para ciertos dispositivos, no queremos aplicar tantos js.
+var isMobile = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/);
+var isApple = navigator.userAgent.match(/(iPhone|iPod|iPad)/);
+var isAndroid = navigator.userAgent.match(/(Android)/);
+
+// Cargamos la API de youtube
+var videoCollection = [];
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+(function ($) {
+
+  /**
+   * Evento de youtube. Lo lanza su api cuando la api está lista.
+   * Aqui creamos los videos y sus eventos asociados.
+   */
+  window.onYouTubeIframeAPIReady = function () {
+    $.each(videoCollection, function (i, conf) {
+
+      var player = new YT.Player(conf.placeholder, {
+        videoId: conf.videoId,
+        playerVars: {
+          //controls: 0,
+          showinfo: 0
+        },
+        events: {
+          'onReady': function (event) {
+            var $placeholder = $('#' + conf.placeholder);
+
+            $(conf.cover).click(function () {
+
+              // Pausamos el slider
+              $(".flexslider").flexslider('pause');
+
+              event.target.playVideo();
+
+              $placeholder.css({
+                zIndex: 1,
+                marginTop: -($placeholder.actual('height') / 2),
+                marginLeft: -($placeholder.actual('width') / 2)
+              });
+            });
+
+
+            $($placeholder.next('.wrapper-960-absolute')).click(function (ev) {
+
+              // Pausamos el slider
+              $(".flexslider").flexslider('pause');
+
+              var $placeholder = $('#' + conf.placeholder);
+              var hasHref = $(ev.target).attr('href');
+
+              // Solo reproducimos el video si no se ha hecho click sobre un link.
+              if (hasHref == undefined) {
+                event.target.playVideo();
+
+                $placeholder.css({
+                  zIndex: 1,
+                  marginTop: -($placeholder.actual('height') / 2),
+                  marginLeft: -($placeholder.actual('width') / 2)
+                });
+
+              }
+
+
+            });
+
+            // si es mobile el video no queda otra que ponerlo encima para que el usuario pueda clickearlo.
+            isMobile !== null && $placeholder.css({zIndex: 1});
+
+
+          },
+
+          'onStateChange': function (e) {
+            // Cuando el video finaliza, revertimos el cover al estado inicial.
+            if (e.data == YT.PlayerState.ENDED) {
+              var $placeholder = $('#' + conf.placeholder);
+              $placeholder.css({zIndex: -1});
+            }
+          }
+        }
+      });
+    });
+  };
+
+  Drupal.behaviors.ecoembes_theme_commons = {
+    attach: function (context, settings) {
+
+      // Detectamos si estamos en un tamaño similar a tablets. Si es así refrescamos la web
+      // para mostrar la version mobile.
+      var redirecting = false;
+      $(window).resize(function () {
+        if ($(window).width() < 960 && !redirecting) {
+          $.cookie('forced-responsive', 'true', {path: '/'});
+          window.location.replace(window.location.href);
+          redirecting = true;
+        }
+      });
+
+      $('.img-wrp').click(function (e) {
+        var $video = $(this).siblings('.local-video');
+
+        if ($video.length) {
+          $video.css({
+            'zIndex': 1,
+            marginTop: -($video.actual('height') / 2),
+            marginLeft: -($video.actual('width') / 2)
+          });
+
+          $video.get(0).play();
+        }
+      });
+
+      // Obtenemos al path actual para tomar deciciones en base a este.
+      var parts = window.location.pathname.split("/");
+
+      $('.node-nota-de-prensa blockquote').each(function (i, bq) {
+        $(bq).addClass("bq-" + i);
+      });
+
+      $('.node-noticia blockquote').each(function (i, bq) {
+        $(bq).addClass("bq-" + i);
+      });
+
+      if ($(".view-id-estudios_todos").get().length) {
+
+        var $subcateg = $(".subcateg");
+
+        $subcateg = (!$subcateg.length) ? 0 : $subcateg.height();
+        //Controlamos el alto del menu lateral del view "Estudios y proyectos destacados"
+        var height = $(".views-table").height() + $subcateg;
+
+        if (height > $(".categ").height()) {
+          $(".categ").height(height);
+        } else {
+          //Esto es para asegurarnos que si hay un solo resultado,
+          // el contenedor sea tan alto como el menu lateral para evitar
+          // que se solape todo contra el footer
+          $(".view-content").height($(".categ").height());
+        }
+
+        if (!$(".subcateg").get().length) {
+          $(".view-content").css({marginTop: 56});
+        }
+
+        $(".view-header .categ a").last().css({borderBottom: "none"});
+
+      }
+
+      if ($(".view-d3-colores").get().length) {
+
+        var view_filters_h = $(".view-filters").height();
+        var view_content_h = $(".view-content").height();
+
+        // Establecemos el tamaño de la columna adyacente en base a la mas larga de las dos.
+        if (view_filters_h > view_content_h) {
+          $(".view-content").height($(".view-filters").height());
+        } else {
+          $(".view-filters").height($(".view-content").height());
+        }
+
+        //Eliminamos el border bottom del ultimo elemento de los filtros.
+        $(".view-d3-colores .bef-select-as-links a").last().css({borderBottom: "none"});
+      }
+
+      if ($(".view-otros-ambitos-actuacion").get().length) {
+
+        var view_filters_h = $(".view-filters").height();
+        var view_content_h = $(".view-content").height();
+
+        // Establecemos el tamaño de la columna adyacente en base a la mas larga de las dos.
+        if (view_filters_h > view_content_h) {
+          $(".view-content").height($(".view-filters").height());
+        } else {
+          $(".view-filters").height($(".view-content").height());
+        }
+
+        //Eliminamos el border bottom del ultimo elemento de los filtros.
+        $(".view-otros-ambitos-actuacion .bef-select-as-links a").last().css({borderBottom: "none"});
+      }
+
+      if ($(".view-descargas-rec-educativos").get().length) {
+
+        var view_filters_h = $(".view-filters").height();
+        var view_content_h = $(".view-content").height();
+
+        // Establecemos el tamaño de la columna adyacente en base a la mas larga de las dos.
+        if (view_filters_h > view_content_h) {
+          $(".view-content").height($(".view-filters").height());
+        } else {
+          $(".view-filters").height($(".view-content").height());
+        }
+
+        $(".bef-select-as-links a").last().css({borderBottom: "none"});
+      }
+
+      if ($(".view-estudios-idi-ciu").get().length) {
+
+        var view_filters_h = $(".view-filters").height();
+        var view_content_h = $(".view-content").height();
+
+        // Establecemos el tamaño de la columna adyacente en base a la mas larga de las dos.
+        if (view_filters_h > view_content_h) {
+          $(".view-content").height($(".view-filters").height());
+        } else {
+          $(".view-filters").height($(".view-content").height());
+        }
+
+        $(".bef-select-as-links a").last().css({borderBottom: "none"});
+      }
+
+      if ($(".view-publicaciones-empresas").get().length) {
+
+        var $subcateg = $(".subcateg");
+
+        $subcateg = (!$subcateg.get().length) ? 0 : $subcateg.height();
+        //Controlamos el alto del menu lateral del view "Estudios y proyectos destacados"
+        var height = $(".views-table").height() + $subcateg;
+
+        if (height > $(".categ").height()) {
+          $(".categ").height(height);
+        } else {
+          //Esto es para asegurarnos que si hay un solo resultado,
+          // el contenedor sea tan alto como el menu lateral para evitar
+          // que se solape todo contra el footer
+          $(".view-content").height($(".categ").height());
+        }
+
+
+        if (!$(".subcateg").get().length) {
+          $(".view-content").css({marginTop: 56});
+        }
+
+        $(".view-header .categ a").last().css({borderBottom: "none"});
+
+      }
+
+
+      if ($(".view-publicaciones-ecoembes").get().length) {
+        $(".bef-select-as-links a").last().css({borderBottom: "none"});
+      }
+
+
+      if (parts.length > 2) {
+        var last = parts[parts.length - 1];
+
+        switch (last) {
+          case "preguntas-frecuentes":
+          case "faq":
+            $("#faq-link-citizens-recycling").addClass("active");
+            $("#faq-link-companies-memb-comp").addClass("active");
+            $("#faq-link-empresas-emp-adheridas").addClass("active");
+            $("#faq-link-ciudadanos-reciclaje").addClass("active");
+            break;
+          case "preguntas-frecuentes-pp":
+          case "preguntas-frecuentes-eco":
+          case "faq-eco":
+          case "faq-pp":
+            $("#faq-link-empresas-planes").addClass("active");
+            $("#faq-link-companies-plans").addClass("active");
+            $("#faq-link-citizens-ecoembes").addClass("active");
+            $("#faq-link-ciudadanos-ecoembes").addClass("active");
+            break;
+        }
+      }
+
+      // Decoramos todos los select y checkbox
+      if ($(".webform-client-form-323201").length == 0) {
+        $("select, input[type='checkbox']").uniform();
+      }
+
+
+      //Nos pegamos al evento "collapsed" para apoyar la maquetación
+      $("fieldset").bind('collapsed', function (e) {
+
+        var $self = $(this);
+        var $wrapper = $self.parent().parent().parent();
+
+        if (!e.value) {
+          $wrapper.addClass("open");
+        } else {
+          $wrapper.removeClass("open");
+        }
+
+      });
+
+
+      //Fix
+      $('#block-block-36').before('<div class="d3-style-wrapper block-36-wrapper">');
+      $('#block-block-36').appendTo('.d3-style-wrapper');
+      $('.view-revista-informativa').appendTo('.d3-style-wrapper');
+      $("#block-block-36 a").last().css({borderBottom: "none"});
+
+      //Fix
+      $('#block-block-64').before('<div class="d3-style-wrapper">');
+      $('#block-block-64').appendTo('.d3-style-wrapper');
+      $('.view-newsletter-accionistas').appendTo('.d3-style-wrapper');
+      $("#block-block-64 a").last().css({borderBottom: "none"});
+
+      // Solución para abrir elementos de megamenu usando el tabulador.
+      // --------------------------------------------------------------
+      var $dropdown_toggle_elements = $('.dropdown-toggle');
+
+      $('body').bind('keyup', function (e) {
+        var keyCode = e.keyCode || e.which;
+        var $focused = $(':focus');
+        var navigating_megamenu = $focused.closest(".tb-megamenu-nav");
+
+        if (keyCode == 9 && $focused.hasClass("dropdown-toggle")) {
+
+          //First we close all open menu elements
+          $dropdown_toggle_elements.next().hide();
+
+          //Now we open the sub elements of focused element.
+          $focused.next().show();
+
+          if (e.shiftKey) {
+            //If you whant react on back step (shift + tab)
+          }
+
+        }
+
+        // If we went out of megamenu we hide all submenu
+        if (navigating_megamenu.length == 0) {
+          $dropdown_toggle_elements.next().hide();
+        }
+
+      });
+
+      if (parts.length > 2) {
+        var last = parts[parts.length - 1];
+        var q = window.location.search != "" ? decodeURIComponent(window.location.search) : "";
+
+        switch (last) {
+          case "revista-informativa":
+            if (q == "") {
+              $(".item-filtro:first").addClass("selected");
+            }
+
+            if (q.indexOf("field_fecha_revista_info_value")) {
+              var qParts = q.split("=");
+
+              for (var i = 0; i < qParts.length; i++) {
+                if (qParts[i] == "?field_fecha_revista_info_value[value][year]") {
+                  var year = qParts[i + 1];
+                  $(".item-filtro a:contains('" + year + "')").parent().addClass("selected");
+                  break;
+                }
+
+                //Edge case.
+                if (qParts[i] == "?field_fecha_revista_info_value_1[value][year]") {
+                  $(".item-filtro:last").addClass("selected");
+                }
+
+              }
+
+            }
+            break;
+        }
+      }
+
+      ////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////
+
+      //if ($("body").hasClass("page-ciudadanos") && $("body").hasClass("front")) {
+      //  var $floatMenu = $('#block-menu-menu-menu-ancla-home');
+      //  var wrapperWidth = 960;
+      //  var floatMenuWidth = 200;
+      //  var top = 810;
+      //  var gap = 155;
+      //
+      //  // Workaround. en webkit los hover realizados sobre un elemento tipo
+      //  // display table, al hacerle hover-out, este elemento desaparece.
+      //  // Con un time-out podemos forzar a que vuelva a verse (que se comporte como se espera.)
+      //  $floatMenu.find(" .menu > li").hover(
+      //    function () {
+      //    },
+      //    function () {
+      //      var $li = $(this);
+      //      $li.css({display: "inherit"});
+      //
+      //      setTimeout(function () {
+      //        $li.css({display: "table"});
+      //      }, 1);
+      //    });
+      //
+      //  /**
+      //   * Version modificada de $.position() para poder obtener la posicion de un elemento
+      //   * incluso antes que se entregue el evento "loaded" del navegador.
+      //   * @returns {{left: number, top: number}}
+      //   */
+      //  jQuery.fn.aPosition = function () {
+      //    var thisLeft = this.offset().left;
+      //    var thisTop = this.offset().top;
+      //    var thisParent = this.parent();
+      //
+      //    var parentLeft = thisParent.offset().left;
+      //    var parentTop = thisParent.offset().top;
+      //
+      //    return {
+      //      left: thisLeft - parentLeft,
+      //      top: thisTop - parentTop
+      //    };
+      //  };
+      //
+      //  /**
+      //   * Cancula la posicion en la que debe colocarse el menu flotante.
+      //   */
+      //  function calcFloatMenuPosition() {
+      //    var newPosition = ($("#navigation > .region-navigation").aPosition().left + wrapperWidth + gap) - floatMenuWidth;
+      //    $floatMenu.css({left: newPosition + 'px'});
+      //  }
+      //
+      //  // Inicialmente calculamos la posicion del menu.
+      //  calcFloatMenuPosition();
+      //  // Finalmente ya podemos mostrarlo.
+      //  $floatMenu.show();
+      //
+      //  $(window).resize(function () {
+      //    calcFloatMenuPosition();
+      //  });
+      //
+      //
+      //  // El menu vamos a moverlo verticalmente cuando se haga scroll hasta que llegue cerca del menu principal.
+      //  var $document = $(document);
+      //  var offset = $("#home_ciud_content_1").offset().top - 170; //170 son los pixeles que compensamos del padding del menu
+      //
+      //  $document.scroll(function () {
+      //    if ($document.scrollTop() < offset) {
+      //      $floatMenu.css({top: (top - $document.scrollTop()) + "px"});
+      //    }
+      //  });
+      //
+      //}
+
+      ////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////
+
+      if ($("body").hasClass("page-ciudadanos-sobre-nosotros-embajadores") || $("body").hasClass("node-type-landing-campanyas")) {
+
+        $('.open-video').addClass('colorbox-inline').once('init-colorbox-inline').colorbox({
+          transition: settings.colorbox.transition,
+          speed: settings.colorbox.speed,
+          opacity: settings.colorbox.opacity,
+          slideshow: settings.colorbox.slideshow,
+          slideshowAuto: settings.colorbox.slideshowAuto,
+          slideshowSpeed: settings.colorbox.slideshowSpeed,
+          slideshowStart: settings.colorbox.slideshowStart,
+          slideshowStop: settings.colorbox.slideshowStop,
+          current: settings.colorbox.current,
+          previous: settings.colorbox.previous,
+          next: settings.colorbox.next,
+          close: settings.colorbox.close,
+          overlayClose: settings.colorbox.overlayClose,
+          maxWidth: settings.colorbox.maxWidth,
+          maxHeight: settings.colorbox.maxHeight,
+          innerWidth: function () {
+            return $('#' + $(this).attr('data-video-wrapper')).width();
+          },
+          innerHeight: function () {
+            return $('#' + $(this).attr('data-video-wrapper')).height();
+          },
+          title: function () {
+            return decodeURIComponent($.urlParam('title', $(this).attr('href')));
+          },
+          inline: function () {
+            return $.urlParam('inline', $(this).attr('href'));
+          },
+          href: function () {
+            return $.urlParam('fragment', $(this).attr('href'));
+          }
+        });
+
+        var videoPlaying = false;
+
+        $(document)
+          .bind('cbox_complete', function (e) {
+            // Cuando se abre, dimensionamos al tamaño del video, y le damos play
+            var $el = $.colorbox.element();
+            if ($el.hasClass('open-video') && !videoPlaying) {
+              var $wrapper = $('#' + $el.attr('data-video-wrapper'));
+              $wrapper.show();
+              $.colorbox.resize();
+              $wrapper.find('video').get(0).play();
+              videoPlaying = true;
+            }
+          })
+          .bind('cbox_closed', function () {
+            // Al cerrar rebobinamos el video.
+            var $el = $.colorbox.element();
+            if ($el.hasClass('open-video')) {
+              var $wrapper = $('#' + $el.attr('data-video-wrapper'));
+              $wrapper.hide();
+              $wrapper.find('video').get(0).pause();
+              $wrapper.find('video').get(0).currentTime = 0;
+              videoPlaying = false;
+            }
+          });
+
+
+        // El micro player de audio es solo para node-type-landing-campanyas
+        if ($("body").hasClass("node-type-landing-campanyas")) {
+
+          var $microAudioPlayer = $('.micro-audio-player');
+          var audio = $microAudioPlayer.find('> audio').get()[0];
+
+          $microAudioPlayer.find('.control').toggle(
+            function () {
+              audio.play();
+              $microAudioPlayer.removeClass('paused').addClass('playing');
+            },
+            function () {
+              audio.pause();
+              $microAudioPlayer.removeClass('playing').addClass('paused');
+            }
+          );
+        }
+
+
+      }
+
+      //////////////////////////////////////////
+      $('ul.accordion:not(".no-js")').once('ecoembes-accordion', function () {
+        var $el = $(this);
+        var $all_a = $el.find('> li > a');
+        var $all_content = $el.find('> li .sub-menu');
+
+        $all_a.click(function (e) {
+          var $a = $(this);
+
+          if ($a.hasClass("active")) {
+            e.preventDefault();
+            $a.removeClass('active').next().hide();
+            return;
+          }
+
+          $all_a.removeClass("active");
+          $all_content.hide();
+
+          // Solo intercedemos si estamos queriendo abrir este tab. de
+          // lo contrario lo dejamos seguir (puede ser simplemente un link a otro lugar)
+          if ($a.attr("href").charAt(0) == "#") {
+            e.preventDefault();
+            $a.addClass('active').next().show();
+          }
+
+        });
+
+      });
+
+      //////////////////////////////////////////
+      $('.tabs-component:not(".no-js")').once('ecoembes-tabs-component', function () {
+        var $el = $(this);
+        var $tabs = $el.find('.tabs li');
+        var $contents = $el.find('.tabs-contents > div');
+
+
+        // Init. seteamos el primer tab
+        $tabs.eq(0).addClass('active');
+        $contents.eq(0).show();
+
+        $tabs.click(function (e) {
+          var $li = $(this);
+
+          $tabs.removeClass("active");
+          $contents.hide();
+
+          // ya podemos habilitar el tab y su contenido relacionado
+          $li.addClass('active');
+          var position = $tabs.index($li);
+          $contents.eq(position).show();
+        });
+
+      });
+
+      $('.tabs-component').removeClass('no-js');
+
+      $('ul.accordion').removeClass('no-js');
+      //////////////////////////////////////////
+      $(".make-justified-list > .field-items").length && $(".make-justified-list > .field-items").addClass("justified-list");
+
+      // Implementaciones especificas.
+      $(".field-name-field-imagen-campanya > .field-items").length && $(".field-name-field-imagen-campanya > .field-items").addClass("justified-list");
+
+      // Workaround!. Las listas justificadas van a fallar si no tienen un \n entre sus elementos.
+      $(".justified-list > *").length && $(".justified-list > *").after("\n");
+
+
+      ////////////////////////////////////////////////////////////////
+
+      $('.view-bloques-home').find('.zone-4, .zone-5, .zone-6').once(function () {
+        var $this = $(this);
+        $this.css({marginTop: -($this.actual('height') / 2) + "px"});
+      });
+      ////////////////////////////////////////////////////////////////
+
+      /**
+       * Genera una descarga al vuelo.
+       * @param filename
+       * @param mime
+       * @example: downloadFile("http://i.stack.imgur.com/L8rHf.png", 'img.png');
+       */
+      var downloadFile = function (filename, mime) {
+        $("<a>")
+          .attr("href", filename)
+          .attr("download", mime || "img.jpg")
+          [0].click();
+      };
+      ////////////////////////////////////////////////////////////////
+
+      ////////////////////////////////////////////////////////////////
+      // a todos los modal que tengan una foto le añadimos un botoncito para que la puedan descargar.
+      if (context == '#cboxLoadedContent') {
+        $('#cboxLoadedContent > .cboxPhoto').once('descargar', function () {
+          var downloadLink = $('<a href="#" class="cbox-download-link"><span class="hidden">Descargar</span></a>');
+          $(this).parent().prepend(downloadLink);
+
+          downloadLink.click(function (e) {
+            e.preventDefault();
+            var src = $(this).next('img').attr('src');
+            downloadFile(src, 'img.' + src.substring(src.length, src.length - 3));
+          });
+        });
+
+      }
+      ////////////////////////////////////////////////////////////////
+
+      // Dropdown en pagina innovación
+      $(".circularlab-dropdown-wrapper h3").click(function () {
+        $(this).toggleClass("selected");
+        $(".options").toggleClass("open")
+      });
+
+      ////////////////////////////////////////////////////////////////
+
+    }
+  };
+
+})(jQuery);
+
+
+(function ($) {
+  Drupal.behaviors.ecoembesHideUpcomingEvents = {
+    attach: function (context, settings) {
+      ////////////////////////////////////////////////////////////////
+      var $base = $('.view-nueva-agenda-ecoembes');
+      var $checkboxes = $base.find('.view-footer .checkbox input[type="checkbox"]');
+
+      $checkboxes.change(function (e) {
+        var $chk = $(this);
+        var $elems = $base.find('.views-row');
+
+        // Reseteamos los mensajes
+        $('.no-items').hide();
+
+        $elems.hide();
+
+        var filter = '';
+
+        $checkboxes.each(function () {
+
+          if ($(this).is(':checked')) {
+            filter += ', .' + $(this).val();
+          }
+
+        });
+
+        if (filter != '') {
+
+          var $subset = $elems.filter(filter);
+          $subset.show();
+
+          $('.day-items-group').each(function () {
+            var $el = $(this);
+            var haveVisibleItems = $el.find('.views-row:visible');
+
+            if (haveVisibleItems.length == 0) {
+              $el.find('.no-items').show();
+            }
+
+          });
+
+        } else {
+          $elems.show();
+        }
+
+
+      });
+
+
+      // Funcionalidad scroll to para cuando clickean en un dia del calendario.
+
+      $('td.date-box, td.single-day').click(function (e) {
+        var origin = $(this).data('day-of-month');
+
+        $('.day-group').each(function () {
+          var $this = $(this);
+          var $day = $this.find("h3").text().match(/\d+/);
+
+          if ($day == origin) {
+            console.log($this.find("h3"));
+
+            $('html,body').animate({scrollTop: $this.find("h3").offset().top});
+
+          }
+        });
+
+
+      });
+      ////////////////////////////////////////////////////////////////
+    }
+  };
+})(jQuery);
+
+
+(function ($) {
+  Drupal.behaviors.preguntasFrecuentesEmp = {
+    attach: function (context, settings) {
+      ////////////////////////////////////////////////////////////////
+      var $base = $('.view-preguntas-frecuentes-emp');
+      var $cats = $base.find('.sidebar-categories .categories');
+      var $faqWrapper = $base.find('.view-content');
+      var $faqGroups = $faqWrapper.find('.cat-group');
+
+      $faqGroups.hide();
+
+
+      $faqGroups.each(function (i, el) {
+        var $group = $(el);
+        var $groupTitle = $group.find('> h3');
+        var $groupItems = $group.find('> .items');
+        var catIndex = 'cat-' + i;
+
+        $group.attr('data-category', catIndex);
+        $groupTitle.attr('data-category', catIndex);
+        $groupItems.attr('data-category', catIndex);
+
+        //Vamos agregando un handler cada una de los titulos y lo mandamos al sidebar
+        $groupTitle.click(function (e) {
+          var $group = $faqGroups.filter('[data-category="' + $groupTitle.data('category') + '"]');
+          $faqGroups.hide();
+          $group.show();
+          $cats.find('> h3').removeClass('active');
+          $groupTitle.addClass('active');
+          $('.category-title').text($groupTitle.text());
+        }).appendTo($cats);
+
+        // Si es el primer item procesado seleccionamos la categoria y abrimos el primer item del accordion interno
+        if (i == 0) {
+          $groupTitle.click();
+          //$groupItems.find('> li:first-child > a').click();
+        }
+      });
+
+      ////////////////////////////////////////////////////////////////
+    }
+  };
+})(jQuery);
+
+
+// Hay una copia de esto en mobile.
+(function ($) {
+  Drupal.behaviors.campanyasADM = {
+    attach: function (context, settings) {
+      ////////////////////////////////////////////////////////////////
+
+      $('.view-display-id-panel_pane_videos').once('campanyas-adm', function () {
+        var hasVideo = false;
+        var $view = $(this);
+
+        $view.find('.views-field-field-imagen-basic-page').click(function (e) {
+          var $this = $(this);
+          var $videoPathContainer = $this.next('.views-field-field-video-archivo1');
+
+          if ($videoPathContainer.length) {
+            var $videoPath = $.trim($videoPathContainer.text());
+            var $modal = $('<div>').addClass('modal video-hidden');
+            var $closeTag = $('<a href="#" class="close-video">Cerrar</a>');
+            var $videoTag = $('<video autoplay controls>');
+            var $videoSource = $('<source src="" type="video/mp4">');
+
+            // Metemos en el DOM los nuevos elementos.
+            $closeTag.appendTo($modal);
+            $videoSource.appendTo($videoTag);
+            $videoTag.appendTo($modal);
+
+            $modal.find('.close-video').click(function (e) {
+              e.preventDefault();
+              $modal.remove();
+            });
+
+            $videoSource.attr('src', $videoPath);
+            $modal.appendTo($view);
+          }
+
+        });
+
+
+      });
+
+      ////////////////////////////////////////////////////////////////
+    }
+  };
+})(jQuery);
+
+(function ($) {
+  Drupal.behaviors.ecoembesNodeCounter = {
+    attach: function (context, settings) {
+      ////////////////////////////////////////////////////////////////
+      $('.js-counter-increment a').once('js-counter-increment', function (e) {
+        var $pdfLink = $(this);
+        $pdfLink.click(function (ev) {
+          var nid = $pdfLink.parent().data('nid');
+
+          $.post(Drupal.settings.basePath + "page-counter", {nid: nid}, function (r) {
+          });
+
+
+        })
+      });
+      ////////////////////////////////////////////////////////////////
+    }
+  };
+})(jQuery);
+

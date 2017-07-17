@@ -1,0 +1,18 @@
+(function ($) {
+    Drupal.behaviors.validateWebformBehavior = {
+        attach: function (context, settings) {
+            if ($(".webform-client-form-323201").length > 0){
+
+                $( ".fieldset-wrapper input" ).keyup(function() {
+                    console.log($(this).parents('.form-wrapper').find('.append'));
+
+                    if ($(this).parents('.form-wrapper').find('.append').length == 0){
+
+                        $(this).parent().parent().before("<div class='append'>Una vez rellenado un campo, debe rellenar todos los campos del mismo grupo.</div>");
+                    }
+
+                });
+            }
+        }
+    };
+}(jQuery));

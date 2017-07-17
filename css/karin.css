@@ -1,0 +1,327 @@
+@charset "utf-8";
+
+/* General */
+h1 h2 h3 h4 h5{
+	font-family: "News Cycle", "Sans serif";
+}
+body{
+	font-family: "News Cycle", "Sans serif";
+	overflow-x:hidden;
+}
+input::-webkit-input-placeholder { font-size: 12pt; }
+input::-moz-placeholder { font-size: 12pt;  }
+input:-ms-input-placeholder { font-size: 12pt; }
+input:-moz-placeholder { font-size: 12pt; }
+
+:focus {
+outline: 0;
+}
+
+.btn:focus {
+outline: 0;
+}
+
+.largetext{
+	font-size:16px;
+}
+.image-responsive{
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Nav */
+.navbar{
+	border-radius:0px;
+	background-color:#FFFFFF;
+	border: 0px;
+	margin-bottom:0px;
+	min-height:120px;
+	-webkit-backface-visibility: hidden;
+}
+.ad1 {
+    background-color: #FFFFFF;
+}
+.container-fluid{
+	max-height: 2000px;
+	padding-left:320px;
+	padding-right:300px;
+}
+.navbar-header{
+	padding-bottom:5px;
+}
+.navbar-toggle{
+    position: relative;
+    float: right;
+    padding: 10px;
+    margin: 20px;
+    background-color: #363636;
+    border: 0px solid #363636;
+}
+.navbar-nav-team li a {
+	color:#FFFFFF !important;
+}
+.navbar-nav li a {
+	color:#6a9b44 !important;
+	margin-left:1px;
+	font-size:15px;
+}
+.navbar-nav li a :hover{
+	color:#517a2d!important;
+	margin-left:1px;
+	font-size:16px;
+} 
+/*Footer*/
+.fa{
+	font-size: 30px; color: #969696; padding-right: 10px;
+}
+.fa:hover{
+	color: #FFFFFF; padding-right: 10px;
+}
+
+
+/* CODGIO EMPRESAS KARIN------------------------------------------------------------- */
+.header-options{
+
+	height: 550px;
+	background: #6a9b44;
+}
+.header-descriptions{
+	margin-top: 20px;
+	text-align: center;
+	color: #fff;
+}
+.option{
+	margin-top: 30px;
+	align-content: center;
+	text-align: center;
+}
+.img{
+	width: 150px;
+	height: 130px;
+	border-radius: 50%;
+}
+.h4-color{
+	color: #fff;
+}
+.icon-arrow{
+	width: 30px;
+	height: 30px;
+}
+.icon-arrow:hover{
+	width: 40px;
+	height: 40px;
+}
+#section-modal-panel{
+	height: 1050px;
+	background: #fff;
+	padding-top: 40px;
+}
+.title-modal{
+	margin-bottom: 60px;
+}
+.modal-section1{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/balanza.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section1:hover, .modal-section2:hover, .modal-section3:hover, .modal-section4:hover,
+.modal-section5:hover, .modal-section6:hover,.modal-section7:hover, .modal-section8:hover, .modal-section9:hover{
+	cursor: pointer;
+	opacity: 0.5;
+}
+.modal-section2{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/botellas.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section3{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/mundo.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section4{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/diseña.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section5{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/buscador.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section6{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/juntos.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section7{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/logros.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section8{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/premios.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+.modal-section9{
+	height: 250px;
+	width: 250px;
+	background: #fff;
+	background-image: url(../images/optimizacion.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 1px solid gray;
+	border-radius: 50%;
+}
+#cursos-de-formacion{
+	height: 100%;
+	background: #f6f6f7;
+}
+.title-cursos{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+#educacion-ambiental{
+	height: 750px;
+	background: #fff;
+}
+.content{
+	height: 470px;
+	background: #f6f6f7;
+	align-content: center;
+	padding-top: 10px;
+	text-align: center;
+}
+.content img{
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: green;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.mod1{
+	display: block;
+}
+.tabcontent{
+	background: #fff;
+}
+.content:hover{
+	width: 250px;
+	height: 500px;
+}
+.cursos1, .cursos2. .cursos3, .cursos4{
+	text-align: justify;
+}
+.cursos-1-img{
+	background-image: url("../images/camp1.png");
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+}
+.cursos-2-img{
+	background-image: url("../images/camp2.jpg");
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+}
+.cursos-3-img{
+	background-image: url("../images/camp3.jpg");
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+}
+.cursos-4-img{
+	background-image: url("../images/mp4.jpg");
+	height: 500px;
+	background-size: cover;
+	background-position: center;
+}
+#educacion-ambiental h4{
+	color: green;
+}
+#educacion-ambiental a{
+	color: black;
+}
+.button-cursos{
+	margin-top: 20px;
+	padding: 10px 60px !important;
+}
+.button-cursos a{
+	color: #fff;
+}
